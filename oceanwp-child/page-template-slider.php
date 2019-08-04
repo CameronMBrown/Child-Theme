@@ -1,14 +1,6 @@
 <?php
 /*
 Template Name: Slider Page
-
-add_filter('slider', 'do_shortcode');
-
-function get_slider_HTML() {
-	$sliderHTML = file_get_contents("./index.html" );
-	echo "<script>console.log(`HERE2`)</script>";
-	return $sliderHTML;
-}
 */
 get_header(); ?>
 
@@ -25,8 +17,6 @@ get_header(); ?>
 			<div id="content" class="site-content clr">
 
 				<?php do_action( 'ocean_before_content_inner' ); ?>
-
-				<?php echo "<script>console.log(`test`)</script>"; ?>
 
 				<?php
 				// Elementor `single` location

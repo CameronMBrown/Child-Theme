@@ -29,16 +29,14 @@ function oceanwp_child_enqueue_parent_style() {
 
 function oceanwp_child_enqueue_custom_script() {
 	// Load javascript for slideshow
-	wp_enqueue_script('slider_js', get_stylesheet_directory_uri() . '/slider.js', array(), '1.0', true);
+	wp_enqueue_script('slider_js', get_stylesheet_directory_uri() . '/slideshow.js', array(), '1.0', true);
 }
 
 function get_slider_HTML() {
 	$sliderHTML = file_get_contents("/app/public/wp-content/themes/oceanwp-child/index.html");
-	echo $sliderHTML ; 
-	echo "<script>console.log({$sliderHTML})</script>";
 	return $sliderHTML;
 }
 add_shortcode('slider', 'get_slider_HTML');
 
 add_action( 'wp_enqueue_scripts', 'oceanwp_child_enqueue_parent_style' );
-add_action('wp_enque_scripts', 'oceanwp_child_enqueue_custom_script');
+add_action( 'wp_enqueue_scripts', 'oceanwp_child_enqueue_custom_script' );
