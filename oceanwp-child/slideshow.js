@@ -125,7 +125,6 @@ function loadThumbnails(images) {
   * @desc Clear the contents of .thumbnail-container
 */
 function clearThumbnails() {
-  //TODO - Go ahead and write this function! Should br pretty simple :)
   document.querySelector(".thumbnail-container").innerHTML = "";
 }
 
