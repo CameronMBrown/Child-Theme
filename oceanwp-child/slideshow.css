@@ -27,6 +27,9 @@ body {
 .tabs {
   display: flex;
   flex-direction: column;
+  background-color: #999999 ;
+  box-shadow: inset -1rem 0 1rem -1rem rgba(0,0,0,0.8);
+  z-index: 0;
 }
 
 .tab {
@@ -36,22 +39,44 @@ body {
   justify-content: center;
   padding: 1rem 2rem;
   text-transform: uppercase;
-  color: #000000;
   cursor: pointer;
 }
 
-.tab.active, .tab:hover {
+.tab:hover {
   background-color: #821104;
   color: white;
+  position: relative;
 }
 
+.tab.active{
+  background-color: #821104;
+  color: white;
+  position: relative;
+}
+
+.tab.active:before, .tab.active:after {
+  content:"";
+  position:absolute; 
+  z-index:-1;
+  box-shadow:0 0 20px rgba(0,0,0,0.8);
+  top:0;
+  bottom:0;
+  left:10px;
+  right:10px;
+  border-radius:100px / 10px;
+}
+
+.tab.active:after{
+  right:10px; 
+  left:auto; 
+  transform:skew(8deg) rotate(3deg);
+}
 /* SLIDES */
 .slideshow-container {
   display: grid;
   grid-template-columns: 20% 80%;
   margin: 25px auto;
   overflow: hidden;
-  z-index: 1;
 }
 
 .slides {
