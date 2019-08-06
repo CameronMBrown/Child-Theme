@@ -3,6 +3,14 @@ const THUMBNAIL_CONTAINER = document.querySelector(".thumbnail-container");
 const NUMBER_OF_IMAGES = 5;
 const SCROLL_SPEED = 3;
 
+if (VARIABLES !== 'undefined') { 
+  imagePath = VARIABLES.templateUrl + '/slider';
+} else { 
+  imagePath = '';
+}
+
+const IMAGE_FOLDER = imagePath;
+
 const SLIDE_DATA = [
   {
     title: 'Numbers',
@@ -99,8 +107,8 @@ function init() {
 init();
 
 /* EVENT LISTENERS */
-document.querySelector(".gallery-container .prev").addEventListener("click", scrollLeft);
-document.querySelector(".gallery-container .next").addEventListener("click", scrollRight);
+document.querySelector(".gallery-wrapper .prev").addEventListener("click", scrollLeft);
+document.querySelector(".gallery-wrapper .next").addEventListener("click", scrollRight);
 
 /* LOADERS */
 
@@ -217,6 +225,7 @@ function clickTab(tab) {
 
 /* SCROLLING */
 function scrollLeft() { //onclick function for left gallery button
+  console.log("ran");
   updateWidths();
   clearActiveThumbnail();
   THUMBNAIL_CONTAINER.append(document.querySelector(".thumbnail")); //querySelector returns first result, so first thumbnail in list moves to end
@@ -296,13 +305,15 @@ function getElementWidth(selector) {
 
 function createThumbnail(src, width) { //loop each img - should be called on load, and each time project tab is changed
   const THUMBNAIL = document.createElement("div");
+  const SRC = `${IMAGE_FOLDER}/${src}`;
+
   THUMBNAIL.classList.add('thumbnail');
   THUMBNAIL.style.width = `${width}px`;
-  THUMBNAIL.setAttribute("data-src", src);
+  THUMBNAIL.setAttribute("data-src", SRC);
   THUMBNAIL.setAttribute("onClick", 'thumbnailClickHandler(this)');
 
   const IMG = document.createElement("img");
-  IMG.src = src;
+  IMG.src =  SRC;
 
   THUMBNAIL.innerHTML = IMG.outerHTML;
   return THUMBNAIL; //returns html div
